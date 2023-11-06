@@ -1,31 +1,26 @@
-def fibonacci_iterative(n:int):
-    if n == 1:
-        return 0
-    elif n == 2:
-        return 1
-    else:
-        dp = [0] * n
-        dp[0] = 0
-        dp[1] = 1
-        for i in range(2,n):
-            dp[i] = dp[i-1] + dp[i-2]
-        return dp[n-1]
+number= int(input ("How many terms the user wants to print? "))  
+  
+# First two terms  
+num1 = 0  
+num2 = 1  
+count = 0  
+  
+# Now, we will check if the number of terms is valid or not  
+if number <= 0:  
+    print ("Please enter a positive integer, the given number is not valid")  
+# if there is only one term, it will return n_1  
+elif number == 1:  
+    print ("The Fibonacci sequence of the numbers up to", number, ": ")  
+    print(num1)  
+# Then we will generate Fibonacci sequence of number  
+else:  
+    print ("The fibonacci sequence of the numbers is:")  
+    while count < number:  
+        print(num1)  
+        nth = num1 + num2  
+       # At last, we will update values  
+        num1 = num2  
+        num2 = nth  
+        count += 1  
 
-def fibonacci_recursive(n):
-    cache = {
-        1:0,
-        2:1
-    }
-    return helper(n,cache)
-
-def helper(n:int,cache):
-    if n in cache:
-        return cache[n]
-    else:
-        return helper(n-1,cache) + helper(n-2,cache)
-
-
-n = int(input("Enter value of n(nth Fibonacci number): "))
-print(f"Fibonacci Number(Iterative): {fibonacci_iterative(n)}")
-print(f"Fibonacci Number(Recursive): {fibonacci_recursive(n)}")
 
